@@ -36,7 +36,7 @@
             <div class="card-body">
               <p class="card-text">Rp. 1.9 juta - Rp. 5 juta</p>
             </div>
-            <button type="button" class="btn btn-warning">Qurban Sekarang</button>
+            <a href="figma24.php"><button type="button" class="btn btn-warning" style="width: 260px">Qurban Sekarang</button></a>
           </div>
         </div>
         <!-- end card kambing -->
@@ -44,11 +44,11 @@
         <!-- card sapi -->
         <div class="col-3">
           <div class="card">
-            <img src="kambing.jpg" class="card-img-top" alt="..." />
+            <img src="sapi.png" class="card-img-top" alt="..." />
             <div class="card-body">
               <p class="card-text">Rp. 16 juta - Rp. 30 juta</p>
             </div>
-            <button type="button" class="btn btn-warning">Qurban Sekarang</button>
+            <a href="figma24.php"><button type="button" class="btn btn-warning" style="width: 260px">Qurban Sekarang</button></a>
           </div>
         </div>
         <!-- end card sapi -->
