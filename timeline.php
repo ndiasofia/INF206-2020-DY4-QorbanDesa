@@ -7,9 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>Qode (Qorban Desa)</title>
+    <title>Nadia Sofia</title>
   </head>
   <body>
 
@@ -28,33 +27,65 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                  <a class="nav-link fw-bolder text-muted" href="figma 1 & 2.html">Home</a>
-                  <a class="nav-link fw-bolder text-muted" href="figma3.html">Hukum Qurban</a>
-                  <a class="nav-link active fw-bolder" href="figma4.html">Tentang Kami</a>
-                  <a class="nav-link fw-bolder text-muted" href="verifikasi.html">List Pengqurban</a>
-                  <!-- <a class="nav-link fw-bolder text-muted" href="Verifikasi">List Penerima Qurban</a> -->
-                  <a class="nav-link fw-bolder text-muted" href="register.php">Register</a>
-                  <a class="nav-link fw-bolder text-muted" href="login.php">Login</a>
+                  <a class="nav-link active fw-bolder text-muted aria-current=page" href="transaksi.html">Data Transaksi</a>
+                  <a class="nav-link fw-bolder text-muted" href="laporan.html">Laporan Qurban</a>
+                  <a class="nav-link fw-bolder text-muted" href="penerima.html">Ajukan Penerima</a>
+                  <a class="nav-link fw-bolder text-muted" href="verifikasi.html">Verifikasi</a>
+                  <a class="nav-link fw-bolder text-muted" href="Verifikasi">Shop</a>
+                  <a class="nav-link fw-bolder text-muted" href="Pesan">Pesan</a>
+                  <a class="nav-link fw-bolder text-muted" href="profil.html">Profil</a>
+                  <a class="nav-link fw-bolder text-muted" href="Logout.php">Logout</a>
+                  <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
               </div>
             </div>
         </div>
       </nav>
       <hr color="#999999" size="10px">
-	  
-    <div class="container">
-      <div class="card mt-4" style= "background: rgba(242, 222, 117, 0.29); ">
-        <div class="card-header text-while text-center" style=" font-family: Yeseva One; ">
-          <h2 class="text-center">
-            <b>Qorban Desa</b>
-          </h2>
-        </div>
-            <div class="card-header text-while text-center" style=" font-family: Yeseva One; font-size: 18px;">
-                <p align="center">Qurban Desa adalah sebuah aplikasi berbasis web yang bisa mempermudah warga desa dan juga panitia qurban dalam kegiatan pelaksanaan qurban. Fitur-fitur yang disediakan aplikasi ini diantaranya warga maupun panitia dapat melakukan transaksi pembelian qurban, konfirmasi penerima qurban dan berbagai fitur lainnya. Kegiatan berqurban dapat dilaksanakan dengan lebih mudah dan efisien.</p>
-              </div>
-      </div> 
+    
+      <table width="100%" height=150 border="3">
+        <tr>
+            <th align:center colspan="2">Total Daftar</th>
+        </tr>
+        <tr>
+            <td align:center>Jumlah Hewan</td>
+            <td align:center>Dana</td>
+        </tr>
+        <tr>
+            <td>..</td>
+            <td>..</td>
+        </tr>
+      </table>
+      <br>
+      <table align:center width="100%" height=150 border="3">
+        <tr>
+            <th align:center colspan="2">Total Belum Bayar</th>
+        </tr>
+        <tr>
+            <td align:center>Transaksi</td>
+            <td align:center>Dana</td>
+        </tr>
+        <tr>
+            <td>..</td>
+            <td>..</td>
+        </tr>
+      </table>
+      <br>
+      <table width="100%" height=150 border="3">
+        <tr>
+            <th align:center colspan="2">Total Belum Bayar</th>
+        </tr>
+        <tr>
+            <td align:center>Transaksi</td>
+            <td align:center>Dana</td>
+        </tr>
+        <tr>
+            <td>..</td>
+            <td>..</td>
+        </tr>
+      </table>
     </div>
-  </div>
-  <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script> -->
@@ -63,7 +94,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    
+   
   </body>
-  </html>
-
+</html>

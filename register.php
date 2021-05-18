@@ -1,3 +1,40 @@
+<?php
+
+require_once("config.php");
+
+if(isset($_POST['register'])){
+
+    // filter data yang diinputkan
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    // enkripsi password
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+
+    // menyiapkan query
+    $sql = "INSERT INTO users (name, username, email, password) 
+            VALUES (:name, :username, :email, :password)";
+    $stmt = $db->prepare($sql);
+
+    // bind parameter ke query
+    $params = array(
+        ":name" => $name,
+        ":username" => $username,
+        ":password" => $password,
+        ":email" => $email
+    );
+
+    // eksekusi query untuk menyimpan ke database
+    $saved = $stmt->execute($params);
+
+    // jika query simpan berhasil, maka user sudah terdaftar
+    // maka alihkan ke halaman login
+    if($saved) header("Location: login.php");
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,7 +46,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>Qode (Qorban Desa)</title>
+    <title>Nadia Sofia</title>
   </head>
   <body>
 
@@ -30,31 +67,52 @@
               <div class="navbar-nav">
                   <a class="nav-link fw-bolder text-muted" href="figma 1 & 2.html">Home</a>
                   <a class="nav-link fw-bolder text-muted" href="figma3.html">Hukum Qurban</a>
-                  <a class="nav-link active fw-bolder" href="figma4.html">Tentang Kami</a>
+                  <a class="nav-link fw-bolder text-muted" href="figma4.html">Tentang Kami</a>
                   <a class="nav-link fw-bolder text-muted" href="verifikasi.html">List Pengqurban</a>
                   <!-- <a class="nav-link fw-bolder text-muted" href="Verifikasi">List Penerima Qurban</a> -->
-                  <a class="nav-link fw-bolder text-muted" href="register.php">Register</a>
+                  <a class="nav-link active fw-bolder" href="register.php">Register</a>
                   <a class="nav-link fw-bolder text-muted" href="login.php">Login</a>
               </div>
             </div>
         </div>
       </nav>
       <hr color="#999999" size="10px">
-	  
-    <div class="container">
-      <div class="card mt-4" style= "background: rgba(242, 222, 117, 0.29); ">
-        <div class="card-header text-while text-center" style=" font-family: Yeseva One; ">
-          <h2 class="text-center">
-            <b>Qorban Desa</b>
-          </h2>
-        </div>
-            <div class="card-header text-while text-center" style=" font-family: Yeseva One; font-size: 18px;">
-                <p align="center">Qurban Desa adalah sebuah aplikasi berbasis web yang bisa mempermudah warga desa dan juga panitia qurban dalam kegiatan pelaksanaan qurban. Fitur-fitur yang disediakan aplikasi ini diantaranya warga maupun panitia dapat melakukan transaksi pembelian qurban, konfirmasi penerima qurban dan berbagai fitur lainnya. Kegiatan berqurban dapat dilaksanakan dengan lebih mudah dan efisien.</p>
-              </div>
-      </div> 
-    </div>
-  </div>
-  <!-- Optional JavaScript; choose one of the two! -->
+    
+      <h2 class="text-center">Buat Akun</h2>
+      <div class="container">
+      <h4>Bergabunglah bersama ribuan orang lainnya menjadi shohibul qurban</h4>
+        <p>Sudah punya akun? <a href="login.php">Login di sini</a></p>
+
+        <form action="" method="POST">
+
+            <div class="form-group">
+                <label for="name">Nama Lengkap</label>
+                <input class="form-control" type="text" name="name" placeholder="Nama kamu" />
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" type="text" name="username" placeholder="Username" />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" name="email" placeholder="Alamat Email" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" name="password" placeholder="Password" />
+            </div>
+
+            <input type="submit" class="btn btn-warning btn-block" name="register" value="Daftar" />
+
+        </form>
+      </div>
+    
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script> -->
@@ -64,6 +122,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     
+    
   </body>
-  </html>
-
+</html>
