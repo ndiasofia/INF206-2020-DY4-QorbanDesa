@@ -7,12 +7,16 @@ if(isset($_POST['submit'])) {
   $nama = $_POST["nama_lengkap"];
   $email = $_POST["email"];
   $notelp = $_POST["no_telepon"];
+  $hewanqurban = $_POST["hewan_qurban"];
+  $metodequrban = $_POST["metode_qurban"];
   $metodebayar = $_POST["metode_bayar"];
   $buktibayar = $_POST["bukti_bayar"];
   
   //query insert
-  $query = "INSERT INTO penqurban VALUES ('', '$nama', '$email', '$notelp', '$metodebayar', '$buktibayar')";
+  $query = "INSERT INTO penqurban VALUES ('', '$nama', '$email', '$notelp', $hewanqurban ,$metodequrban, '$metodebayar', '$buktibayar')";
   mysqli_query($conn, $query);
+
+  var_dump($query);
 
 }
 ?>
@@ -39,35 +43,105 @@ if(isset($_POST['submit'])) {
     </nav>
     <!-- end navbar -->
 
-    <h1 class="text-center">penqurban</h1>
-
+    <div class="container">
+    <h2 class="alert alert-warning text-center mt-3">Formulir Penqurban</h2>
+    
     <form action="" method="post">
-    <h1>Lengkapi Data Diri</h1>
-            <div class="form-data">
-                <label for="nama">Nama Lengkap</label>
-                <input type="text" name="nama_lengkap" id="nama">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
+                <label for="nama">Nama Lengkap</label> 
+                </div>
+                <div class="col-md-9">
+                <input type="text" name="nama_lengkap" class="form-control" id="nama">
+                </div>
+              </div>
             </div>
-            <div class="form-data">
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
                 <label for="email">email</label>
-                <input type="text" name="email" id="email">
+                </div>
+                <div class="col-md-9">
+                <input type="text" name="email" class="form-control" id="email">
+                </div>
+              </div> 
             </div>
-            <div class="form-data">
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
                 <label for="notelepon">No Telepon</label>
-                <input type="text" name="no_telepon" id="notelepon">
+                </div>
+                <div class="col-md-9">
+                <input type="text" name="no_telepon" class="form-control" id="notelepon">
+                </div>
+              </div>
             </div>
-            <div class="form-data">
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
+                <label for="metodebayar">Hewan Qurban</label>
+                </div>
+                <div class="col-md-9">
+                <select class="form-select" name="hewan_qurban" aria-label="Default select example">
+                  <option selected>Pilih Hewan Qurban</option>
+                  <option value="sapi">Sapi</option>
+                  <option value="kambing">Kambing</option>
+                </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
+                <label for="metodebayar">Metode Qurban</label>
+                </div>
+                <div class="col-md-9">
+                <select class="form-select" name = "metode_qurban" aria-label="Default select example">
+                  <option selected>Pilih Metode Qurban</option>
+                  <option value="1">individu</option>
+                  <option value="2">kelompok</option>
+                </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
                 <label for="metodebayar">Metode Pembayaran</label>
-                <input type="text" name="metode_bayar" id="metobayar">
+                </div>
+                <div class="col-md-9">
+                <select class="form-select" name="metode_bayar" aria-label="Default select example">
+                  <option selected>Pilih  Metode Pembayaran</option>
+                  <option value="1">BSI</option>
+                  <option value="2">BRI</option>
+                  <option value="3">BNI</option>
+                </select>
+                </div>
+              </div>
             </div>
-            <div class="form-data">
-                <label for="buktibayar">masukkan bukti setoran</label>
-                <input type="file" name="bukti_bayar" id="buktibayar">
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
+                <label for="buktibayar">Bukti Setoran</label>
+                </div>
+                <div class="col-md-9">
+                <input type="file" name="bukti_bayar" class="form-control" id="buktibayar">
+                </div>
+              </div>
             </div>
-            <div class="form-data">
+
+            <div class="form-group">
                 <button type="submit" name="submit">Lunasi Pembayaran</button>
             </div>
     </form>
-
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

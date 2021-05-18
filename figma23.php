@@ -34,9 +34,14 @@
           <div class="card">
             <img src="kambing.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
-              <p class="card-text">Rp. 1.9 juta - Rp. 5 juta</p>
+              <p class="card-text">
+                jenis : kambing <br />
+                berat : 250 kg <br />
+                jumlah : 1 <br />
+                total harga : 5.000.000
+              </p>
             </div>
-            <a href="figma24.php"><button type="button" class="btn btn-warning" style="width: 260px">Qurban Sekarang</button></a>
+            <a href="figma26.php"><button type="button" class="btn btn-warning" style="width: 260px">Qurban Sekarang</button></a>
           </div>
         </div>
         <!-- end card kambing -->
@@ -46,9 +51,16 @@
           <div class="card">
             <img src="sapi.png" class="card-img-top" alt="..." />
             <div class="card-body">
-              <p class="card-text">Rp. 16 juta - Rp. 30 juta</p>
+              <p class="card-text">
+                jenis : sapi <br />
+                berat : 500 kg <br />
+                jumlah : 1 <br />
+                total harga : 30.000.000
+              </p>
+     
+               
             </div>
-            <a href="figma24.php"><button type="button" class="btn btn-warning" style="width: 260px">Qurban Sekarang</button></a>
+            <a href="figma26.php"><button type="button" class="btn btn-warning" style="width: 260px">Qurban Sekarang</button></a>
           </div>
         </div>
         <!-- end card sapi -->
