@@ -59,20 +59,19 @@ if(isset($_POST['register'])){
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-warning bg-warning">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bolder text-muted"><img class="rounded-image" src="img1.jpg" alt="" width="30" height="30" >Dashboard</a>
+            <a class="navbar-brand fw-bolder text-muted"><img class="bi me-3" src="home.png" alt="" width="30" height="30" >Dashboard</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                   <a class="nav-link active fw-bolder text-muted aria-current=page" href="index.php">Home</a>
-                  <a class="nav-link fw-bolder text-muted" href="laporan.html">Hukum Qurban</a>
-                  <a class="nav-link fw-bolder text-muted" href="penerima.html">Tentang Kami</a>
-                  <a class="nav-link fw-bolder text-muted" href="verifikasi.html">List Pengqurban</a>
-                  <a class="nav-link fw-bolder text-muted" href="Verifikasi">List Penerima Qurban</a>
-                  <a class="nav-link fw-bolder text-muted" href="Pesan">Daftar Sebagai Pequrban</a>
-                  <a class="nav-link fw-bolder text-muted" href="Logout">Login</a>
-                  <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
+                  <a class="nav-link fw-bolder text-muted" href="hukum.html">Hukum Qurban</a>
+                  <a class="nav-link fw-bolder text-muted" href="tentang.html">Tentang Kami</a>
+                  <a class="nav-link fw-bolder text-muted" href="#">List Pengqurban</a>
+                  <!-- <a class="nav-link fw-bolder text-muted" href="Verifikasi">List Penerima Qurban</a> -->
+                  <a class="nav-link fw-bolder text-muted" href="login.php">Daftar Sebagai Pequrban</a>
+                  <a class="nav-link fw-bolder text-muted" href="login.php">Login</a>
               </div>
             </div>
         </div>
