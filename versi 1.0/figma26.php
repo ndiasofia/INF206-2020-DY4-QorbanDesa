@@ -88,8 +88,8 @@ if(isset($_POST['submit'])) {
                 <div class="col-md-9">
                 <select class="form-select" name="hewan_qurban" aria-label="Default select example">
                   <option selected>Pilih Hewan Qurban</option>
-                  <option value="sapi">Sapi</option>
-                  <option value="kambing">Kambing</option>
+                  <option value="1">Sapi</option>
+                  <option value="2">Kambing</option>
                 </select>
                 </div>
               </div>
