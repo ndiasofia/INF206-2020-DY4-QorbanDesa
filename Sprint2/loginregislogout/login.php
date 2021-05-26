@@ -47,33 +47,47 @@ if(isset($_POST['login'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="../style/index.css" />
 
     <title>Nadia Sofia</title>
   </head>
   <body>
     
-      <nav class="navbar navbar-expand-lg navbar-warning bg-warning">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bolder text-muted"><img class="bi me-3" src="home.png" alt="" width="30" height="30" >Dashboard</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-nav">
+        <div class="container">
+          <img class="logo" src="../assets/3.png" alt="logo qode" />
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                  <a class="nav-link active fw-bolder text-muted aria-current=page" href="home.html">Home</a>
-                  <a class="nav-link fw-bolder text-muted" href="hukum.html">Hukum Qurban</a>
-                  <a class="nav-link fw-bolder text-muted" href="tentang.html">Tentang Kami</a>
-                  <a class="nav-link fw-bolder text-muted" href="#">List Pengqurban</a>
-                  <!-- <a class="nav-link fw-bolder text-muted" href="Verifikasi">List Penerima Qurban</a> -->
-                  <a class="nav-link fw-bolder text-muted" href="login.php">Daftar Sebagai Pequrban</a>
-                  <a class="nav-link fw-bolder text-muted" href="login.php">Login</a>
-              </div>
-            </div>
+          </button>
+
+          <div class="navbar-navscroll"> 
+              <ul class="navbar-nav bd-navbar-nav">
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item"> 
+                    <a class="nav-link" href="#">Contact</a> 
+                </li>
+                <li class="nav-item"> 
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+              </ul>
+              
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link btn-hotline border text-light" aria-current="page" href="#"><i class="fab fa-whatsapp"></i>Hotline Qurban via Whatsapp</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
-      <hr color="#999999" size="10px">
+    </header>
     
       <div class="container">
       <h2 class="text-center">~ Selamat Datang ~</h2>
