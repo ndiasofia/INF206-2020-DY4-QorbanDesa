@@ -8,16 +8,18 @@ if(isset($_POST['register'])){
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     // enkripsi password
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $no_telepon = filter_input(INPUT_POST, 'no_telepon', FILTER_SANITIZE_STRING);
 
 
     // menyiapkan query
-    $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
+    $sql = "INSERT INTO users (username, password, no_telepon) VALUES (:username, :password, :no_telepon)";
     $stmt = $db->prepare($sql);
 
     // bind parameter ke query
     $params = array(
         ":username" => $username,
-        ":password" => $password
+        ":password" => $password,
+        ":no_telepon" => $no_telepon
     );
 
     // eksekusi query untuk menyimpan ke database
