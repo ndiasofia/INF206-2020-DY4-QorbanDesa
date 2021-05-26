@@ -6,83 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="../style/index.css" />
 
     <title>Nadia Sofia</title>
   </head>
   <body>
-
-
     
-      <nav class="navbar navbar-expand-lg navbar-warning bg-warning">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bolder text-muted"><img class="bi me-3" src="home.png" alt="" width="30" height="30" >Dashboard</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-nav">
+        <div class="container">
+          <img class="logo" src="../assets/3.png" alt="logo qode" />
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                  <a class="nav-link active fw-bolder text-muted aria-current=page" href="transaksi.php">Data Transaksi</a>
-                  <a class="nav-link fw-bolder text-muted" href="laporan.html">Laporan Qurban</a>
-                  <a class="nav-link fw-bolder text-muted" href="namapequrban.html">Ajukan Nama</a>
-                  <!-- <a class="nav-link fw-bolder text-muted" href="verifikasi.html">Verifikasi</a> -->
-                  <a class="nav-link fw-bolder text-muted" href="formshop.php">Shop</a>
-                  <!-- <a class="nav-link fw-bolder text-muted" href="Pesan">Pesan</a> -->
-                  <a class="nav-link fw-bolder text-muted" href="profil.html">Profil</a>
-                  <a class="nav-link fw-bolder text-muted" href="logout.php">Logout</a>
-                  <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
-              </div>
-            </div>
+          </button>
+
+          <div class="navbar-navscroll"> 
+              <ul class="navbar-nav bd-navbar-nav">
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item"> 
+                    <a class="nav-link" href="#">Contact</a> 
+                </li>
+                <li class="nav-item"> 
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+              </ul>
+              
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link btn-hotline border text-light" aria-current="page" href="#"><i class="fab fa-whatsapp"></i>Hotline Qurban via Whatsapp</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
-      <hr color="#999999" size="10px">
+    </header>
 
       <div class="container-fluid">
         <h1>halaman user</h1>
       </div>
     
-      <!-- <table width="100%" height=150 border="3">
-        <tr>
-            <th align:center colspan="2">Total Daftar</th>
-        </tr>
-        <tr>
-            <td align:center>Jumlah Hewan</td>
-            <td align:center>Dana</td>
-        </tr>
-        <tr>
-            <td>..</td>
-            <td>..</td>
-        </tr>
-      </table>
-      <br>
-      <table align:center width="100%" height=150 border="3">
-        <tr>
-            <th align:center colspan="2">Total Belum Bayar</th>
-        </tr>
-        <tr>
-            <td align:center>Transaksi</td>
-            <td align:center>Dana</td>
-        </tr>
-        <tr>
-            <td>..</td>
-            <td>..</td>
-        </tr>
-      </table>
-      <br>
-      <table width="100%" height=150 border="3">
-        <tr>
-            <th align:center colspan="2">Total Belum Bayar</th>
-        </tr>
-        <tr>
-            <td align:center>Transaksi</td>
-            <td align:center>Dana</td>
-        </tr>
-        <tr>
-            <td>..</td>
-            <td>..</td>
-        </tr>
-      </table>
-    </div> -->
+      
 
     <!-- Optional JavaScript; choose one of the two! -->
 
