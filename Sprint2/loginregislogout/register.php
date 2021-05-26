@@ -59,7 +59,6 @@ if(isset($_POST['register'])){
                   <a class="nav-link fw-bolder text-muted" href="hukum.html">Hukum Qurban</a>
                   <a class="nav-link fw-bolder text-muted" href="tentang.html">Tentang Kami</a>
                   <a class="nav-link fw-bolder text-muted" href="#">List Pengqurban</a>
-                  <!-- <a class="nav-link fw-bolder text-muted" href="Verifikasi">List Penerima Qurban</a> -->
                   <a class="nav-link fw-bolder text-muted" href="login.php">Daftar Sebagai Pequrban</a>
                   <a class="nav-link fw-bolder text-muted" href="login.php">Login</a>
               </div>
@@ -75,11 +74,6 @@ if(isset($_POST['register'])){
 
         <form action="" method="POST">
 
-            <!-- <div class="form-group">
-                <label for="name">Nama Lengkap</label>
-                <input class="form-control" type="text" name="name" placeholder="Nama kamu" />
-            </div> -->
-
             <div class="form-group">
                 <label for="username">Username</label>
                 <input class="form-control" type="text" name="username" placeholder="Username" />
@@ -88,6 +82,11 @@ if(isset($_POST['register'])){
             <div class="form-group">
                 <label for="password">Password</label>
                 <input class="form-control" type="password" name="password" placeholder="Password" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">No Telepon</label>
+                <input class="form-control" type="text" name="no_telepon" placeholder="No Telepon" />
             </div>
 
             <input type="submit" class="btn btn-warning btn-block" name="register" value="Daftar" />
