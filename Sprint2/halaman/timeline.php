@@ -26,13 +26,13 @@
           <div class="navbar-navscroll"> 
               <ul class="navbar-nav bd-navbar-nav">
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item"> 
                     <a class="nav-link" href="#">Contact</a> 
                 </li>
                 <li class="nav-item"> 
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="../masuk/logout.php">Logout</a>
                 </li>
               </ul>
               
@@ -52,7 +52,48 @@
         <h1>halaman user</h1>
       </div>
     
-      
+      <!-- <table width="100%" height=150 border="3">
+        <tr>
+            <th align:center colspan="2">Total Daftar</th>
+        </tr>
+        <tr>
+            <td align:center>Jumlah Hewan</td>
+            <td align:center>Dana</td>
+        </tr>
+        <tr>
+            <td>..</td>
+            <td>..</td>
+        </tr>
+      </table>
+      <br>
+      <table align:center width="100%" height=150 border="3">
+        <tr>
+            <th align:center colspan="2">Total Belum Bayar</th>
+        </tr>
+        <tr>
+            <td align:center>Transaksi</td>
+            <td align:center>Dana</td>
+        </tr>
+        <tr>
+            <td>..</td>
+            <td>..</td>
+        </tr>
+      </table>
+      <br>
+      <table width="100%" height=150 border="3">
+        <tr>
+            <th align:center colspan="2">Total Belum Bayar</th>
+        </tr>
+        <tr>
+            <td align:center>Transaksi</td>
+            <td align:center>Dana</td>
+        </tr>
+        <tr>
+            <td>..</td>
+            <td>..</td>
+        </tr>
+      </table>
+    </div> -->
 
     <!-- Optional JavaScript; choose one of the two! -->
 

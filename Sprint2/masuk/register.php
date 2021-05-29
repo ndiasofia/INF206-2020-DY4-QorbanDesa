@@ -10,7 +10,6 @@ if(isset($_POST['register'])){
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $no_telepon = filter_input(INPUT_POST, 'no_telepon', FILTER_SANITIZE_STRING);
 
-
     // menyiapkan query
     $sql = "INSERT INTO users (username, password, no_telepon) VALUES (:username, :password, :no_telepon)";
     $stmt = $db->prepare($sql);
@@ -48,7 +47,7 @@ if(isset($_POST['register'])){
   </head>
   <body>
     
-      <header>
+  <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-nav">
         <div class="container">
           <img class="logo" src="../assets/3.png" alt="logo qode" />
@@ -82,29 +81,32 @@ if(isset($_POST['register'])){
       </nav>
     </header>
     
-      <h2 class="text-center">Buat Akun</h2>
       <div class="container">
-      <h4>Bergabunglah bersama ribuan orang lainnya menjadi shohibul qurban</h4>
-        <p>Sudah punya akun? <a href="login.php">Login di sini</a></p>
+      <br>
+      <h3>Bergabunglah bersama ribuan orang lainnya menjadi shohibul qurban</h3>
+      <br>
+        <h5>Sudah punya akun? <a href="login.php">Login di sini</a></h5>
 
-        <form action="" method="POST">
+        <form method="POST">
 
             <div class="form-group">
-                <label for="username">Username</label>
+                <label id="form" for="username">Username</label>
                 <input class="form-control" type="text" name="username" placeholder="Username" />
             </div>
+            <br>
 
             <div class="form-group">
-                <label for="password">Password</label>
+                <label id="form" for="password">Password</label>
                 <input class="form-control" type="password" name="password" placeholder="Password" />
             </div>
+            <br>
 
             <div class="form-group">
-                <label for="password">No Telepon</label>
+                <label id="form" for="password">No Telepon</label>
                 <input class="form-control" type="text" name="no_telepon" placeholder="No Telepon" />
             </div>
 
-            <input type="submit" class="btn btn-warning btn-block" name="register" value="Daftar" />
+            <input id="submit-btn" type="submit" class="btn btn-block" name="register" value="Daftar" />
 
         </form>
 

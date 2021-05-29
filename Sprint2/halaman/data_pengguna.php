@@ -1,3 +1,18 @@
+<?php 
+include('../masuk/library.php');
+$lib = new Library();
+$data_siswa = $lib->show();
+ 
+if(isset($_GET['hapus_siswa']))
+{
+    $id = $_GET['hapus_siswa'];
+    $status_hapus = $lib->delete($id);
+    if($status_hapus)
+    {
+        header('Location: index.php');
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -32,7 +47,7 @@
                     <a class="nav-link" href="#">Contact</a> 
                 </li>
                 <li class="nav-item"> 
-                <a class="nav-link" href="../masuk/logout.php">Logout</a>
+                    <a class="nav-link" href="../masuk/logout.php">Logout</a>
                 </li>
               </ul>
               
@@ -47,20 +62,41 @@
         </div>
       </nav>
     </header>
-      
-      <div>
-      <h1>Selamat Datang di Halaman Admin</h1>
-      </div>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script> -->
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
     
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-   
-  </body>
+    <div class="container">
+    <br>
+        <div class="card">
+            <div class="card-header">
+                <h3>Data Pengguna</h3>
+            </div>
+            <div class="card-body">
+                <hr/>
+                <table class="table table-bordered" width="60%">
+                    <tr>
+                        <th>No</th>
+                        <th>Username</th>
+                        <th>No Telepon</th>
+                        <!-- <th>Alamat</th> -->
+                        <th>Action</th>
+                    </tr>
+                    <?php 
+                    $no = 1;
+                    foreach($data_siswa as $row)
+                    {
+                        echo "<tr>";
+                        echo "<td>".$no."</td>";
+                        echo "<td>".$row['username']."</td>";
+                        echo "<td>".$row['no_telepon']."</td>";
+                        // echo "<td>".$row['alamat']."</td>";
+                        echo "<td><a class='btn btn-info' href='../masuk/form_edit.php?id=".$row['id']."'>Edit</a>
+                        <a class='btn btn-danger' href='../masuk/library.php?hapus_siswa=".$row['id']."'>Hapus</a></td>";
+                        echo "</tr>";
+                        $no++;
+                    }
+                    ?>
+                </table>
+            </div>
+        </div>
+    </div>
+    </body>
 </html>

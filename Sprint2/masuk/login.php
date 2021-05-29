@@ -27,10 +27,10 @@ if(isset($_POST['login'])){
             session_start();
             // masuk ke halaman admin
             if ($username === 'admin' && $password === 'admin'){
-              header("Location: halaman_admin.php");
+              header("Location: ../halaman/halaman_admin.php");
               exit;
             } else {
-              header("Location: timeline.php");
+              header("Location: ../halaman/timeline.php");
               exit;
             }
         }
@@ -90,24 +90,25 @@ if(isset($_POST['login'])){
     </header>
     
       <div class="container">
-      <h2 class="text-center">~ Selamat Datang ~</h2>
-      <h4>Masuk ke akun Anda</h4>
-        <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
+      <br>
+      <h3>Silahkan masuk ke akun Anda</h3>
+      <br>
+        <h5>Belum punya akun? <a href="register.php">Daftar di sini</a></h5>
 
         <form action="" method="POST">
 
             <div class="form-group">
-                <label for="username">Username</label>
+                <label id="form" for="username">Username</label>
                 <input class="form-control" type="text" name="username" placeholder="Username" />
             </div>
-
+            <br>
 
             <div class="form-group">
-                <label for="password">Password</label>
+                <label id="form" for="password">Password</label>
                 <input class="form-control" type="password" name="password" placeholder="Password" />
             </div>
 
-            <input type="submit" class="btn btn-warning btn-block" name="login" value="Masuk" />
+            <input id="submit-btn" type="submit" class="btn btn-warning btn-block" name="login" value="Masuk" />
 
         </form>
         </div>

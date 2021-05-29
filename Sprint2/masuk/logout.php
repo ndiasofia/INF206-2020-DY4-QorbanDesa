@@ -3,5 +3,5 @@
     //logout
     session_destroy();
     // arahkan ke halaman index.php 
-    header("location: index.php");
+    header("location: ../landingpage.html");
 ?>
