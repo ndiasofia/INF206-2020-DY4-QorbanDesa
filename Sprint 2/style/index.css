@@ -8,6 +8,10 @@ body {
   background-color: rgb(212, 136, 64);
 }
 
+.logo {
+  height: 50px !important;
+}
+
 .btn-hotline {
   border-radius: 8px !important;
 }
@@ -43,11 +47,16 @@ body {
 }
 
 .list-item button {
-  width: 35px;
+  width: 100px;
   height: 35px;
   border: none;
-  color: blue;
-  border-radius: 50%;
+  color: black;
+  /* border-radius: 50%; */
+}
+
+.btn-pilih {
+  background-color: rgb(212, 136, 64) !important;
+  color: white !important;
 }
 
 .price-card {
@@ -56,4 +65,8 @@ body {
 
 .price-card span {
   font-weight: bold;
+}
+
+.form-check-input {
+  height: 2px;
 }

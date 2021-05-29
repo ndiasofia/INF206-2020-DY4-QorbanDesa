@@ -13,9 +13,24 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-nav">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
         <div class="container">
-          <img src="site-logo__white.svg" alt="" />
+          <img class="logo" src="assets/logo.png" alt="logo qode" />
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Laporan Qurban</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Beli Qurban</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Log Out</a>
+            </li>
+          </ul>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,17 +48,50 @@
 
     <main class="container border mt-5">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-7">
           <h2>Metode Pembayaran</h2>
           <div class="row list-item mt-2">
-            <li>BNI Syariah</li>
+            <div class="col-lg-4">
+              <p>BRI Syariah</p>
+            </div>
+            <div class="col-lg-4">
+              <p>No Rek : 1111111111</p>
+            </div>
+            <div class="col-lg-4">
+              <button type="button" class="btn btn-pilih">Pilih</button>
+            </div>
           </div>
+
           <div class="row list-item mt-2">
-            <li>BRI Syariah</li>
+            <div class="col-lg-4">
+              <p>BNI Syariah</p>
+            </div>
+            <div class="col-lg-4">
+              <p>No Rek : 222222222</p>
+            </div>
+            <div class="col-lg-4">
+              <button type="button" class="btn btn-pilih">Pilih</button>
+            </div>
           </div>
+
           <div class="row list-item mt-2">
-            <li>Mandiri Syariah</li>
+            <div class="col-lg-4">
+              <p>Mandiri Syariah</p>
+            </div>
+            <div class="col-lg-4">
+              <p>No Rek : 333333333</p>
+            </div>
+            <div class="col-lg-4">
+              <button type="button" class="btn btn-pilih">Pilih</button>
+            </div>
           </div>
+
+          <!-- example
+          <div class="row list-item mt-2">
+            <p>Mandiri Syariah</p>
+            <p>No Rekening : 1111111111</p>
+          </div>
+          end example -->
 
           <label for="buktibayar">Bukti Transfer</label>
           <input type="file" name="bukti_bayar" class="form-control" id="buktibayar" />
@@ -53,7 +101,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4 price-card">
+        <div class="col-lg-5 price-card">
           <div>
             <!-- <p><span>lokasi qurban</span></p>
             <p>qurban termurah</p> -->
@@ -125,11 +173,6 @@
 
               <div class="col-lg-6">
                 <p>No HP</p>
-              </div>
-              <div class="col-lg-6">:</div>
-
-              <div class="col-lg-6">
-                <p>Email</p>
               </div>
               <div class="col-lg-6">:</div>
             </div>
