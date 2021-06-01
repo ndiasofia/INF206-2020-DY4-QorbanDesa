@@ -1,47 +1,68 @@
 <?php
 
 session_start();
+require_once("config.php");
 
-$_SESSION["kambing"]="0";
-$_SESSION["sapi7"]="0";
-$_SESSION["sapi"]="0";
-$_SESSION["hkambing"]="Rp.  0";
-$_SESSION["hsapi7"]="Rp.  0";
-$_SESSION["hsapi"]="Rp.  0";
-$_SESSION["total"]="Rp.  0";
+//membuat fungsi untuk mengupload file
+function upload() {
+  $tmpName = $_FILES['bukti_pembayaran']['tmp_name'];
+  $error= $_FILES['bukti_pembayaran']['error'];
+  $namaFile = $_FILES['bukti_pembayaran']['name'];
 
+  //cek file berhasil di-upload
+  if ($error===4) {
+    echo "<script>
+    alert('gambar gagal diupload');
+    </script>";
+    return false;
+  }
 
-function hrgkambing() {
-  $_SESSION["hkambing"]="Rp.  1.700.000";
-}
-function hrgsapi7() {
-  $_SESSION["hsapi7"]="Rp.  2.000.000";
-}
-function hrgsapi() {
-  $_SESSION["hsapi"]="Rp.  12.700.000";
+  //ekstensi format gambar
+  $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+  $ekstensiGambar = explode('.', $namaFile);
+  $ekstensiGambar = strtolower(end($ekstensiGambar));
+
+  if(!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+    echo "<script>
+    alert('format gambar tidak sesuai');
+    </script>";
+  }
+  
+  //memindahkan file foto ktp ke direktori (folder file, foto_ktp)
+  move_uploaded_file($tmpName, 'files/bukti_pembayaran/'.$namaFile);
+
+  return $namaFile;
 }
 
-function kambing() {
-  $_SESSION["kambing"]="1";
-}
-function sapi7() {
-  $_SESSION["sapi7"]="1";
-}
-function sapi() {
-  $_SESSION["sapi"]="1";
-}
-if(isset($_POST['kbg'])) {
-  kambing();
-  hrgkambing();
-  $_SESSION["total"]="Rp.  1.700.000";
-} else if(isset($_POST['sp7'])) {
-  sapi7();
-  hrgsapi7();
-  $_SESSION["total"]="Rp.  2.000.000";
-} else if(isset($_POST['spi'])) {
-  sapi();
-  hrgsapi();
-  $_SESSION["total"]="Rp.  12.700.000";
+if(isset($_POST['lanjut'])){
+
+  //upload gambar
+  $bukti_pembayaran = upload();
+  if( !$bukti_pembayaran) {
+    return false;
+  }
+  $tanggal = date('Y-m-d');
+  
+
+  $sql = "UPDATE data_pengqurban SET bukti_pembayaran=:bukti_pembayaran, tanggal=:tanggal WHERE nama_sq='".$_SESSION["nama_sq"]."'";
+  $stmt = $db->prepare($sql);
+
+  // bind parameter ke query
+  $params = array(
+    ":bukti_pembayaran" => $bukti_pembayaran,
+    ":tanggal" => $tanggal 
+  );
+
+  // eksekusi query untuk menyimpan ke database
+  $saved = $stmt->execute($params);
+
+  // jika query simpan berhasil, maka user sudah terdaftar
+  // maka alihkan ke halaman login
+  if($saved) {
+    header("Location: laporanqurban.php");
+  }else {
+    echo "error";
+  }    
 }
 ?>
 
@@ -56,26 +77,26 @@ if(isset($_POST['kbg'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style/index.css" />
-    <title>Halaman 1</title>
+    <title>Halaman 3</title>
   </head>
   <body>
-    <header>
+  <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
         <div class="container">
           <img class="logo" src="assets/logo.png" alt="logo qode" />
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Laporan Qurban</a>
+                <a class="nav-link" aria-current="page" href="laporanqurban.php">Laporan Qurban</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">Beli Qurban</a>
+                <a class="nav-link active" href="halaman1.php">Beli Qurban</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Profil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Log Out</a>
+                <a class="nav-link" href="logout.php">Log Out</a>
               </li>
             </ul>
           </div>
@@ -96,59 +117,52 @@ if(isset($_POST['kbg'])) {
     <main class="container border mt-5">
       <div class="row">
         <div class="col-lg-8">
-          <h2>Pilih Hewan Qurban</h2>
-          <div class="alert disclaimer" role="alert">
-            <span> Disclaimer : </span>
-            Penyaluran hewan qurban termurah ditentukan oleh Kitabisa dengan mengedepankan lokasi dan penerima manfaat yang membutuhkan.
+          <form action="" method="POST" enctype="multipart/form-data">
+          <h2>Metode Pembayaran</h2>
+          <p>Kirimkan dana pembayaran ke salah satu rekening dibawah kemudian upload bukti transfernya</p>
+          <div class="row list-item mt-2">
+            <div class="col-lg-6">
+              <p>BRI Syariah</p>
+            </div>
+            <div class="col-lg-4">
+              <p>No Rek : 1111111111</p>
+            </div>
           </div>
 
           <div class="row list-item mt-2">
-            <div class="col-lg-4">
-              <p>Kambing</p>
+            <div class="col-lg-6">
+              <p>BNI Syariah</p>
             </div>
             <div class="col-lg-4">
-              <p>@1.700.000</p>
-            </div>
-            <div class="col-lg-4">
-            <form method="post">
-            <button type="submit" class="btn btn-pilih" name="kbg">Pilih</button>
-            </form>
-            </div>
-          </div>
-          <div class="row list-item mt-2">
-            <div class="col-lg-4">
-              <p>1/7 Sapi</p>
-            </div>
-            <div class="col-lg-4">
-              <p>@2.000.000</p>
-            </div>
-            <div class="col-lg-4">
-              <!-- <button>-</button>
-              <input type="text" />
-              <button>+</button> -->
-
-              <form method="post">
-            <button type="submit" class="btn btn-pilih" name="sp7">Pilih</button>
-            </form>
-            </div>
-          </div>
-          <div class="row list-item mt-2">
-            <div class="col-lg-4">
-              <p>Sapi</p>
-            </div>
-            <div class="col-lg-4">
-              <p>@12.700.000</p>
-            </div>
-            <div class="col-lg-4">
-            <form method="post">
-            <button type="submit" class="btn btn-pilih" name="spi">Pilih</button>
-            </form>
+              <p>No Rek : 222222222</p>
             </div>
           </div>
 
-          <div class="d-flex align-items-end flex-column bd-highlight mb-2">
-            <button class="btn btn-sm btn-danger mt-5" onclick="window.location='halaman2.php';" >SELANJUTNYA</button>
+          <div class="row list-item mt-2">
+            <div class="col-lg-6">
+              <p>Mandiri Syariah</p>
+            </div>
+            <div class="col-lg-4">
+              <p>No Rek : 333333333</p>
+            </div>
           </div>
+
+          <!-- example
+          <div class="row list-item mt-2">
+            <p>Mandiri Syariah</p>
+            <p>No Rekening : 1111111111</p>
+          </div>
+          end example -->
+
+          <br>
+          <form action="" method="POST" enctype="multipart/form-data">
+            <label for="bukti_pembayaran"><h2>Bukti Transfer</h2></label>
+            <input type="file" name="bukti_pembayaran" class="form-control" />
+
+            <div class="d-flex align-items-end flex-column bd-highlight mb-2">
+              <button class="btn btn-sm btn-danger mt-5" name="lanjut">Bayar</button>
+            </div>
+          </form>
         </div>
 
         <div class="col-lg-4 price-card">
@@ -229,6 +243,14 @@ if(isset($_POST['kbg'])) {
               <p><?php echo $_SESSION["no_hp"] ?></p>
             </div>
             <hr />
+            <p><span>Data Penqurban</span></p>
+            <div class="row">
+              <div class="col-lg-5">Qurban atas Nama</div>
+              <div class="col-lg-1">:</div>
+              <div class="col-lg-6">
+              <p><?php echo $_SESSION["nama_sq"] ?></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
