@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once("config.php");
+require_once("../masuk/config.php");
 
 //fungsi untuk mengupload file
 function upload() {
@@ -29,7 +29,7 @@ if(!in_array($ekstensiGambar, $ekstensiGambarValid)) {
 }
 
 //memindahkan file bukti pembayaran ke direktori (folder file, bukti_pembayaran)
-move_uploaded_file($tmpName, 'files/bukti_pembayaran/'.$namaFile);
+move_uploaded_file($tmpName, '../files/foto_ktp/'.$namaFile);
 
 return $namaFile;
 }
@@ -42,11 +42,11 @@ if(isset($_POST['lanjut'])){
     $harga=$_SESSION["hkambing"];
   }
   else if($_SESSION["sapi7"]==1){
-    $nama_hewan="Sapi";
+    $nama_hewan="1/7 Sapi";
     $harga=$_SESSION["hsapi7"];
   }
   else if($_SESSION["sapi"]==1){
-    $nama_hewan="Sapi 1/7";
+    $nama_hewan="Sapi";
     $harga=$_SESSION["hsapi"];
   }
 
@@ -92,13 +92,15 @@ if(isset($_POST['lanjut'])){
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="style/index.css" />
+    <link rel="stylesheet" href="../style/index.css" />
     <title>Halaman 2</title>
+
   </head>
   <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
       <div class="container">
-        <img class="logo" src="assets/logo.png" alt="logo qode" />
+        <img class="logo" src="../assets/logo.png" alt="logo qode" />
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -111,7 +113,7 @@ if(isset($_POST['lanjut'])){
               <a class="nav-link" href="#">Profil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout.php">Log Out</a>
+              <a class="nav-link" href="../masuk/logout.php">Log Out</a>
             </li>
           </ul>
         </div>
