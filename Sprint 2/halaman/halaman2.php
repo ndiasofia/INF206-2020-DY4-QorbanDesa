@@ -29,7 +29,7 @@ if(!in_array($ekstensiGambar, $ekstensiGambarValid)) {
 }
 
 //memindahkan file bukti pembayaran ke direktori (folder file, bukti_pembayaran)
-move_uploaded_file($tmpName, '../files/bukti_pembayaran/'.$namaFile);
+move_uploaded_file($tmpName, '../files/foto_ktp/'.$namaFile);
 
 return $namaFile;
 }
