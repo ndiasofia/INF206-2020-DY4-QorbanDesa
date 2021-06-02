@@ -47,15 +47,11 @@ body {
 }
 
 .list-item button {
-  width: 100px;
+  width: 35px;
   height: 35px;
   border: none;
-  color: black;
-}
-
-.btn-pilih {
-  background-color: rgb(212, 136, 64) !important;
-  color: white !important;
+  color: blue;
+  border-radius: 50%;
 }
 
 .price-card {
@@ -64,10 +60,6 @@ body {
 
 .price-card span {
   font-weight: bold;
-}
-
-.form-check-input {
-  height: 2px;
 }
 
 .js-scroll-trigger button {

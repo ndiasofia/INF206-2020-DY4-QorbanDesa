@@ -44,15 +44,17 @@ if(isset($_POST['register'])){
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/index.css" />
+    <link rel="stylesheet" href="../style/index.css" />
+
     <title>QoDe (Qorban Desa)</title>
   </head>
+
   <body>
     
       <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-nav">
         <div class="container">
-          <img class="logo" src="assets/logo.png" alt="logo qode" />
+          <img class="logo" src="../assets/logo.png" alt="logo qode" />
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -61,13 +63,10 @@ if(isset($_POST['register'])){
           <div class="navbar-navscroll"> 
               <ul class="navbar-nav bd-navbar-nav">
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="../halaman/hukumqurban.html">Hukum Qurban</a>
                 </li>
                 <li class="nav-item"> 
-                    <a class="nav-link" href="#">Contact</a> 
-                </li>
-                <li class="nav-item"> 
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="../halaman/tentang.html">Tentang Kami</a> 
                 </li>
               </ul>
               
@@ -75,7 +74,7 @@ if(isset($_POST['register'])){
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link btn-hotline border text-light" aria-current="page" href="#"><i class="fab fa-whatsapp"></i>Hotline Qurban via Whatsapp</a>
+                <a class="nav-link btn-hotline border text-light" aria-current="page" href="https://wa.me/6282227010648"><i class="fab fa-whatsapp"></i>Hotline Qurban via Whatsapp</a>
               </li>
             </ul>
           </div>
@@ -95,6 +94,11 @@ if(isset($_POST['register'])){
         <form action="" method="POST">
 
             <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <input class="form-control" type="nama" name="nama" placeholder="Masukkan nama lengkap" />
+            </div>
+
+            <div class="form-group">
                 <label for="no_hp">No Telepon</label>
                 <input class="form-control" type="text" name="no_hp" placeholder="Masukkan nomor telepon" />
             </div>
@@ -104,14 +108,9 @@ if(isset($_POST['register'])){
                 <input class="form-control" type="password" name="password" placeholder="Masukkan password" />
             </div>
 
-            <div class="form-group">
-                <label for="nama">Nama Lengkap</label>
-                <input class="form-control" type="nama" name="nama" placeholder="Masukkan nama lengkap" />
-            </div>
+            <input id="submit-btn" type="submit" class="btn btn-block" name="register" value="Daftar" />
 
-            <input type="submit" class="btn btn-pilih" name="register" value="Daftar" />
-
-        </form>
+          </form>
       </div>
     
     
