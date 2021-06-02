@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once("config.php");
+require_once("../masuk/config.php");
 
 //membuat fungsi untuk mengupload file
 function upload() {
@@ -29,7 +29,7 @@ function upload() {
   }
   
   //memindahkan file foto ktp ke direktori (folder file, foto_ktp)
-  move_uploaded_file($tmpName, 'files/bukti_pembayaran/'.$namaFile);
+  move_uploaded_file($tmpName, '../files/foto_ktp/'.$namaFile);
 
   return $namaFile;
 }
@@ -76,42 +76,44 @@ if(isset($_POST['lanjut'])){
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="style/index.css" />
+    <link rel="stylesheet" href="../style/index2.css" />
+
     <title>Halaman 3</title>
   </head>
+
   <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
-        <div class="container">
-          <img class="logo" src="assets/logo.png" alt="logo qode" />
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="laporanqurban.php">Laporan Qurban</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="halaman1.php">Beli Qurban</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Profil</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="logout.php">Log Out</a>
-              </li>
-            </ul>
-          </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link btn-hotline border text-light" aria-current="page" href="#"><i class="fab fa-whatsapp"></i>Hotline Qurban via Whatsapp</a>
-              </li>
-            </ul>
-          </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+      <div class="container">
+        <img class="logo" src="../assets/logo.png" alt="logo qode" />
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="laporanqurban.php">Laporan Qurban</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="halaman1.php">Beli Qurban</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../masuk/profil.php">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../masuk/logout.php">Log Out</a>
+            </li>
+          </ul>
         </div>
-      </nav>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link btn-hotline border text-light" aria-current="page" href="https://wa.me/6282227010648"><i class="fab fa-whatsapp"></i>Hotline Qurban via Whatsapp</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     </header>
 
     <main class="container border mt-5">
@@ -232,7 +234,11 @@ if(isset($_POST['lanjut'])){
               </div>
               <div class="col-lg-1">:</div>
               <div class="col-lg-6">
-              <p><?php echo $_SESSION["nama"] ?></p>
+              <p><?php if($_SESSION["nama_baru"]==''){
+                echo $_SESSION["nama"];
+              } else {
+                echo $_SESSION["nama_baru"];
+              }?></p>
             </div>
               <div class="col-lg-5">
                 <p>No HP</p>

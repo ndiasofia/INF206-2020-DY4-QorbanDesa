@@ -1,84 +1,50 @@
 <?php
 
 session_start();
-require_once("../masuk/config.php");
 
-//fungsi untuk mengupload file
-function upload() {
-$tmpName = $_FILES['foto_ktp']['tmp_name'];
-$error= $_FILES['foto_ktp']['error'];
-$namaFile = $_FILES['foto_ktp']['name'];
+//membuat sesi untuk pilihan hewan qurban dan harganya
+$_SESSION["kambing"]=0;
+$_SESSION["sapi7"]=0;
+$_SESSION["sapi"]=0;
+$_SESSION["hkambing"]="Rp.  0";
+$_SESSION["hsapi7"]="Rp.  0";
+$_SESSION["hsapi"]="Rp.  0";
+$_SESSION["total"]="Rp.  0";
 
-//cek file berhasil di-upload
-if ($error===4) {
-  echo "<script>
-  alert('gambar gagal diupload');
-  </script>";
-  return false;
+//fungsi untuk mengubah harga dan jumlah hewan qurban yang telah dipilih
+function hrgkambing() {
+  $_SESSION["hkambing"]="Rp.  1.700.000";
+}
+function hrgsapi7() {
+  $_SESSION["hsapi7"]="Rp.  2.000.000";
+}
+function hrgsapi() {
+  $_SESSION["hsapi"]="Rp.  12.700.000";
 }
 
-//ekstensi format gambar
-$ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
-$ekstensiGambar = explode('.', $namaFile);
-$ekstensiGambar = strtolower(end($ekstensiGambar));
-
-if(!in_array($ekstensiGambar, $ekstensiGambarValid)) {
-  echo "<script>
-  alert('format gambar tidak sesuai');
-  </script>";
+function kambing() {
+  $_SESSION["kambing"]=1;
+}
+function sapi7() {
+  $_SESSION["sapi7"]=1;
+}
+function sapi() {
+  $_SESSION["sapi"]=1;
 }
 
-//memindahkan file bukti pembayaran ke direktori (folder file, bukti_pembayaran)
-move_uploaded_file($tmpName, '../files/foto_ktp/'.$namaFile);
-
-return $namaFile;
-}
-
-//inisialisasi variable agar sesuai dengan pilihan di halaman sebelumnya dengan menggunakan session
-if(isset($_POST['lanjut'])){
-  
-  if($_SESSION["kambing"]==1) {
-    $nama_hewan="Kambing";
-    $harga=$_SESSION["hkambing"];
-  }
-  else if($_SESSION["sapi7"]==1){
-    $nama_hewan="1/7 Sapi";
-    $harga=$_SESSION["hsapi7"];
-  }
-  else if($_SESSION["sapi"]==1){
-    $nama_hewan="Sapi";
-    $harga=$_SESSION["hsapi"];
-  }
-
-  
-  $foto_ktp = upload();
-  if( !$foto_ktp) {
-    return false;
-  }
-  $nama_sq = filter_input(INPUT_POST, 'nama_sq', FILTER_SANITIZE_STRING);
-  $no_hp_p = $_SESSION["no_hp"];
-
-  $sql = "INSERT INTO data_pengqurban (no_hp_p, nama_sq, foto_ktp, nama_hewan, jumlah, harga) 
-            VALUES (:no_hp_p, :nama_sq, :foto_ktp, :nama_hewan, 1, :harga)";
-  $stmt = $db->prepare($sql);
-
-  //bind parameter
-  $params = array(
-    ":no_hp_p" => $no_hp_p,
-    ":nama_sq" => $nama_sq,
-    ":foto_ktp" => $foto_ktp,
-    ":nama_hewan" => $nama_hewan,
-    ":harga" => $harga
-  );
-    
-  $saved = $stmt->execute($params);
-
-  //jika data tersimpan maka alihkan ke halaman 3
-  if($saved) header("Location: halaman3.php");
-
-  //membuat session untuk nama pengqurban
-  $_SESSION["nama_sq"]=$nama_sq;
-      
+//memanggil fungsi jika menekan tombol pilih
+if(isset($_POST['kbg'])) {
+  kambing();
+  hrgkambing();
+  $_SESSION["total"]="Rp.  1.700.000";
+} else if(isset($_POST['sp7'])) {
+  sapi7();
+  hrgsapi7();
+  $_SESSION["total"]="Rp.  2.000.000";
+} else if(isset($_POST['spi'])) {
+  sapi();
+  hrgsapi();
+  $_SESSION["total"]="Rp.  12.700.000";
 }
 ?>
 
@@ -92,12 +58,13 @@ if(isset($_POST['lanjut'])){
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="../style/index.css" />
-    <title>Halaman 2</title>
+    <link rel="stylesheet" href="../style/index2.css" />
 
+    <title>Halaman 1</title>
   </head>
-  <body>
 
+  <body>
+    <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
       <div class="container">
         <img class="logo" src="../assets/logo.png" alt="logo qode" />
@@ -110,7 +77,7 @@ if(isset($_POST['lanjut'])){
               <a class="nav-link active" href="halaman1.php">Beli Qurban</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profil</a>
+              <a class="nav-link" href="../masuk/profil.php">Profil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../masuk/logout.php">Log Out</a>
@@ -123,35 +90,68 @@ if(isset($_POST['lanjut'])){
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link btn-hotline border text-light" aria-current="page" href="#"><i class="fab fa-whatsapp"></i>Hotline Qurban via Whatsapp</a>
+              <a class="nav-link btn-hotline border text-light" aria-current="page" href="https://wa.me/6282227010648"><i class="fab fa-whatsapp"></i>Hotline Qurban via Whatsapp</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+    </header>
 
-    <div class="container border mt-5">
+    <main class="container border mt-5">
       <div class="row">
-          <div class="col-lg-8">
-            <form action="" method="POST" enctype="multipart/form-data">
-            <h2>Identitas Penqurban</h2>
-            <div class="mb-3">
-              <p>Upload KTP anda dalam format jpg/jpeg/png</p>
-              <input type="file" class="form-control" name="foto_ktp" />
-            </div>
-            <h2>Nama Shahibul Qurban</h2>
-            <p>Tuliskan nama lengkap orang yang berqurban (disertai "binti nama ayah kandung") untuk tujuan penyembelihan</p>
-            <div class="row">
-              <div class="col-lg-4">Qurban atas Nama</div>
-              <div class="col-lg-8">
-                <input class="form-control" type="text" name="nama_sq" />
-              </div>
-            </div>
-            <div class="d-flex align-items-end flex-column bd-highlight mb-2">
-              <button class="btn btn-sm btn-danger mt-5" name="lanjut">SELANJUTNYA</button>
-            </div>
-            </form>
+        <div class="col-lg-8">
+        <form method="post">
+          <h2>Pilih Hewan Qurban</h2>
+          <div class="alert disclaimer" role="alert">
+            <span> Disclaimer : </span>
+            Penyaluran hewan qurban termurah ditentukan oleh Tim QorbanDesa dengan mengedepankan warga desa penerima manfaat yang membutuhkan.
+            <br>
+            <br>
+            <span> Disclaimer : </span>
+            Sebelum memilih qurban berkelompok, harap konfirmasi terlebih dahulu dengan panitia melalui contact yang terdapat di website!!
           </div>
+
+          <div class="row list-item mt-2">
+          
+            <div class="col-lg-4">
+              <p>Kambing</p>
+            </div>
+            <div class="col-lg-4">
+              <p>@1.700.000</p>
+            </div>
+            <div class="col-lg-4">
+            <button type="submit" class="btn btn-pilih" name="kbg">Pilih</button>
+            </div>
+          </div>
+          <div class="row list-item mt-2">
+            <div class="col-lg-4">
+              <p>1/7 Sapi</p>
+            </div>
+            <div class="col-lg-4">
+              <p>@2.000.000</p>
+            </div>
+            <div class="col-lg-4">
+            <button type="submit" class="btn btn-pilih" name="sp7">Pilih</button>
+            </div>
+          </div>
+          <div class="row list-item mt-2">
+            <div class="col-lg-4">
+              <p>Sapi</p>
+            </div>
+            <div class="col-lg-4">
+              <p>@12.700.000</p>
+            </div>
+            <div class="col-lg-4">
+            <button type="submit" class="btn btn-pilih" name="spi">Pilih</button>
+            </div>
+          </div>
+          </form>
+
+          <div class="d-flex align-items-end flex-column bd-highlight mb-2">
+            <button class="btn btn-sm btn-danger mt-5" onclick="window.location='halaman2.php';" >SELANJUTNYA</button>
+          </div>
+        </div>
 
         <div class="col-lg-4 price-card">
         <div>
@@ -220,7 +220,11 @@ if(isset($_POST['lanjut'])){
               </div>
               <div class="col-lg-1">:</div>
               <div class="col-lg-6">
-              <p><?php echo $_SESSION["nama"] ?></p>
+              <p><?php if($_SESSION["nama_baru"]==''){
+                echo $_SESSION["nama"];
+              } else {
+                echo $_SESSION["nama_baru"];
+              }?></p>
             </div>
               <div class="col-lg-5">
                 <p>No HP</p>
@@ -234,8 +238,7 @@ if(isset($_POST['lanjut'])){
           </div>
         </div>
       </div>
-    </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
   </body>
 </html>
-
