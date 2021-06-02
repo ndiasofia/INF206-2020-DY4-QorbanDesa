@@ -29,7 +29,7 @@ function upload() {
   }
   
   //memindahkan file foto ktp ke direktori (folder file, foto_ktp)
-  move_uploaded_file($tmpName, '../files/foto_ktp/'.$namaFile);
+  move_uploaded_file($tmpName, '../files/bukti_pembayaran/'.$namaFile);
 
   return $namaFile;
 }
