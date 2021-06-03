@@ -1,33 +1,19 @@
 <?php
+require 'functions.php';
 
-require_once("config.php");
-
-if(isset($_POST['register'])){
-
-    // filter data yang diinputkan
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    // enkripsi password
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $no_telepon = filter_input(INPUT_POST, 'no_telepon', FILTER_SANITIZE_STRING);
-
-    // menyiapkan query
-    $sql = "INSERT INTO users (username, password, no_telepon) VALUES (:username, :password, :no_telepon)";
-    $stmt = $db->prepare($sql);
-
-    // bind parameter ke query
-    $params = array(
-        ":username" => $username,
-        ":password" => $password,
-        ":no_telepon" => $no_telepon
-    );
-
-    // eksekusi query untuk menyimpan ke database
-    $saved = $stmt->execute($params);
-
-    // jika query simpan berhasil, maka user sudah terdaftar
-    // maka alihkan ke halaman login
-    if($saved) header("Location: login.php");
+if ( isset($_POST["register"])) 
+{
+  if (register($_POST) > 0 ) 
+  {
+    echo "<script>
+      alert('user baru berhasil ditambakan!');
+    </script>";
+    header('Location:login.php');
+  }else{
+    echo mysqli_error($conn);
+  }
 }
+
 
 ?>
 
@@ -39,18 +25,19 @@ if(isset($_POST['register'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/index.css" />
 
-    <title>Nadia Sofia</title>
+    <title>QoDe (Qorban Desa)</title>
   </head>
+
   <body>
     
-  <header>
+      <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-nav">
         <div class="container">
-          <img class="logo" src="../assets/3.png" alt="logo qode" />
+          <img class="logo" src="../assets/logo.png" alt="logo qode" />
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -59,13 +46,10 @@ if(isset($_POST['register'])){
           <div class="navbar-navscroll"> 
               <ul class="navbar-nav bd-navbar-nav">
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="../halaman/hukumqurban.html">Hukum Qurban</a>
                 </li>
                 <li class="nav-item"> 
-                    <a class="nav-link" href="#">Contact</a> 
-                </li>
-                <li class="nav-item"> 
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="../halaman/tentang.html">Tentang Kami</a> 
                 </li>
               </ul>
               
@@ -73,7 +57,7 @@ if(isset($_POST['register'])){
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link btn-hotline border text-light" aria-current="page" href="#"><i class="fab fa-whatsapp"></i>Hotline Qurban via Whatsapp</a>
+                <a class="nav-link btn-hotline border text-light" aria-current="page" href="https://wa.me/6282227010648"><i class="fab fa-whatsapp"></i>Hotline Qurban via Whatsapp</a>
               </li>
             </ul>
           </div>
@@ -81,35 +65,41 @@ if(isset($_POST['register'])){
       </nav>
     </header>
     
+      <main>
+    
+  <div class="container">
+      <br>
+      <h2 class="text-center">Buat Akun</h2>
       <div class="container">
-      <br>
-      <h3>Bergabunglah bersama ribuan orang lainnya menjadi shohibul qurban</h3>
-      <br>
-        <h5>Sudah punya akun? <a href="login.php">Login di sini</a></h5>
+      <h4>Bergabunglah bersama ribuan orang lainnya menjadi shohibul qurban</h4>
+        <p>Sudah punya akun? <a href="login.php">Login di sini</a></p>
 
-        <form method="POST">
+        <form action="" method="POST">
 
             <div class="form-group">
-                <label id="form" for="username">Username</label>
-                <input class="form-control" type="text" name="username" placeholder="Username" />
+                <label for="nama">Nama Lengkap</label>
+                <input class="form-control" type="nama" name="nama" placeholder="Masukkan nama lengkap" />
             </div>
-            <br>
 
             <div class="form-group">
-                <label id="form" for="password">Password</label>
-                <input class="form-control" type="password" name="password" placeholder="Password" />
+                <label for="no_hp">No Telepon</label>
+                <input class="form-control" type="text" name="no_hp" placeholder="Masukkan nomor telepon" />
             </div>
-            <br>
 
             <div class="form-group">
-                <label id="form" for="password">No Telepon</label>
-                <input class="form-control" type="text" name="no_telepon" placeholder="No Telepon" />
+                <label for="password">Password</label>
+                <input class="form-control" type="password" name="password" placeholder="Masukkan password" />
+            </div>
+
+            <div class="form-group">
+                <label for="password2">Konfirmasi password</label>
+                <input class="form-control" type="password" name="password2" placeholder="Masukkan password" />
             </div>
 
             <input id="submit-btn" type="submit" class="btn btn-block" name="register" value="Daftar" />
 
-        </form>
-
+          </form>
+      </div>
     
     
 
@@ -123,6 +113,6 @@ if(isset($_POST['register'])){
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     
-    
+    </main>
   </body>
 </html>

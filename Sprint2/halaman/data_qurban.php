@@ -1,15 +1,15 @@
 <?php 
 include('../masuk/library.php');
 $lib = new Library();
-$data_users = $lib->show();
+$data_qurban = $lib->showlaporan();
  
-if(isset($_GET['hapus_users']))
+if(isset($_GET['hapus_laporan']))
 {
-    $id = $_GET['hapus_users'];
-    $status_hapus = $lib->delete($id);
+    $id = $_GET['hapus_laporan'];
+    $status_hapus = $lib->deletelaporan($id);
     if($status_hapus)
     {
-        header('Location: data_pengguna.php');
+        header('Location: data_qurban.php');
     }
 }
 ?>
@@ -36,10 +36,10 @@ if(isset($_GET['hapus_users']))
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="data_pengguna.php">Pengguna</a>
+              <a class="nav-link" href="data_pengguna.php">Pengguna</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="data_qurban.php">Laporan Qurban</a>
+              <a class="nav-link active" href="data_qurban.php">Laporan Qurban</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../masuk/logout.php">Log Out</a>
@@ -67,24 +67,38 @@ if(isset($_GET['hapus_users']))
                 <h3>Data Pengguna</h3>
             </div>
             <div class="card-body">
-                <hr/>
+			<hr>
                 <table class="table table-bordered" width="60%">
                     <tr>
                         <th>No</th>
-                        <th>Nama Lengkap</th>
                         <th>No Telepon</th>
+                        <th>Nama Pequrban</th>
+                        <th>Tanggal</th>
+                        <th>Jenis Qurban</th>
+                        <th>Jumlah</th>
+                        <th>Harga</th>
+                        <th>Foto KTP</th>
+                        <th>Bukti Pembayaran</th>
+                        <th>Keterangan</th>
                         <th>Action</th>
                     </tr>
                     <?php 
                     $no = 1;
-                    foreach($data_users as $row)
+                    foreach($data_qurban as $row)
                     {
                         echo "<tr>";
                         echo "<td>".$no."</td>";
-                        echo "<td>".$row['nama']."</td>";
-                        echo "<td>".$row['no_hp']."</td>";
-                        echo "<td><a class='btn btn-info' href='../masuk/form_edit.php?id=".$row['id']."'>Edit</a>
-                        <a class='btn btn-danger' href=data_pengguna.php?hapus_users=".$row['id']."'>Hapus</a></td>";
+                        echo "<td>".$row['no_hp_p']."</td>";
+                        echo "<td>".$row['nama_sq']."</td>";
+                        echo "<td>".$row['tanggal']."</td>";
+                        echo "<td>".$row['nama_hewan']."</td>";
+                        echo "<td>".$row['jumlah']."</td>";
+                        echo "<td>".$row['harga']."</td>"; ?>
+                        <td><img src='../files/foto_ktp/<?php echo $row['foto_ktp']; ?>' width="50"></td>
+                        <td><img src='../files/bukti_pembayaran/<?php echo $row['bukti_pembayaran']; ?>' width="50"></td> <?php
+                        echo "<td>".$row['keterangan']."</td>";
+                        echo "<td><a class='btn btn-info' href='../masuk/form_edit_laporan.php?id=".$row['id']."'>Edit</a>
+                        <a class='btn btn-danger' href='data_qurban.php?hapus_laporan=".$row['id']."'>Hapus</a></td>";
                         echo "</tr>";
                         $no++;
                     }

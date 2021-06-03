@@ -3,21 +3,20 @@ include('library.php');
 $lib = new Library();
 if(isset($_GET['id'])){
     $id = $_GET['id']; 
-    $data_users = $lib->get_by_id($id);
+    $data_qurban = $lib->get_by_id_laporan($id);
 }
 else
 {
     header('Location: ../halaman/data_pengguna.php');
 }
  
-if(isset($_POST['tombol_update'])){
+if(isset($_POST['tombol_update2'])){
     $id = $_POST['id'];
-    $name = $_POST['nama'];
-    $no_telepon = $_POST['no_hp'];
-    $status_update = $lib->update($id,$name,$no_telepon);
+    $keterangan = $_POST['keterangan'];
+    $status_update = $lib->update2($id,$keterangan);
     if($status_update)
     {
-        header('Location:../halaman/data_pengguna.php');
+        header('Location:../halaman/data_qurban.php');
     }
 }
 ?>
@@ -45,10 +44,10 @@ if(isset($_POST['tombol_update'])){
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="../halaman/data_pengguna.php">Pengguna</a>
+              <a class="nav-link" href="../halaman/data_pengguna.php">Pengguna</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../halaman/data_qurban.php">Laporan Qurban</a>
+              <a class="nav-link active" href="../halaman/data_qurban.php">Laporan Qurban</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="logout.php">Log Out</a>
@@ -73,27 +72,21 @@ if(isset($_POST['tombol_update'])){
     <br>
         <div class="card">
             <div class="card-header">
-                <h3>Update Data Pengguna</h3>
+                <h3>Konfirmasi Pembayaran</h3>
             </div>
             <div class="card-body ">
             <form method="post" action="">
-                <input type="hidden" name="id" value="<?php echo $data_users['id']; ?>"/>
+                <input type="hidden" name="id" value="<?php echo $data_qurban['id']; ?>"/>
                 <div class="form-group row">
-                    <label for="nama" class="col-sm-4 col-form-label">Nama Lengkap</label>
+                    <label for="keterangan" class="col-sm-20 col-form-label">Masukkan 1 untuk konfirmasi Pembayaran</label>
                     <div class="col-sm-35">
-                    <input type="text" name="nama" class="form-control" id="nama" value="<?php echo $data_users['nama']; ?>">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="no_hp" class="col-sm-4 col-form-label">No Telepon</label>
-                    <div class="col-sm-35">
-                    <input type="text" value="<?php echo $data_users['no_hp']; ?>" name="no_hp" class="form-control" id="no_hp">
+                    <input type="text" name="keterangan" class="form-control" id="keterangan" value="<?php echo $data_qurban['keterangan']; ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="alamat" class="col-sm-4 col-form-label"></label>
                     <div class="col-sm-10">
-                    <input type="submit" name="tombol_update" class="btn btn-primary" value="Update">
+                    <input type="submit" name="tombol_update2" class="btn btn-primary" value="Update">
                     </div>
                 </div>
             </form>

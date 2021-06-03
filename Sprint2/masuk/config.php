@@ -3,7 +3,7 @@
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "";
-$db_name = "qode";
+$db_name = "qode2";
 
 try {    
     //create PDO connection 
